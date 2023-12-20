@@ -941,4 +941,57 @@ ghci> import OtherLib
 ![ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/d27ea8dcfad541918d9094b9aed83e7d61daf8532bbbe.png)  
 「　↑　ダメだ　エラーだ　終わった」  
 
+![ohkina-hiyoko-futsu2.png](https://crieit.now.sh/upload_images/96fb09724c3ce40ee0861a0fd1da563d61daf8a09d9bc.png)  
+「　何やってんの？」  
+
+![ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/d27ea8dcfad541918d9094b9aed83e7d61daf8532bbbe.png)  
+「　わからない。コピー貼り付けしてるだけ」  
+
+🗒 `haskell-project.cabal`:  
+
+```cabal
+library
+    exposed-modules:  MyLib
+```
+
+![ohkina-hiyoko-futsu2.png](https://crieit.now.sh/upload_images/96fb09724c3ce40ee0861a0fd1da563d61daf8a09d9bc.png)  
+「　↑　この部分を」  
+
+🗒 `haskell-project.cabal`:  
+
+```cabal
+library
+    exposed-modules:  MyLib
+                      OtherLib
+```
+
+![ohkina-hiyoko-futsu2.png](https://crieit.now.sh/upload_images/96fb09724c3ce40ee0861a0fd1da563d61daf8a09d9bc.png)  
+「　↑　こう書き換えたらいいんじゃない？」  
+
+```bash
+cabal repl
+Resolving dependencies...
+Build profile: -w ghc-9.4.7 -O1
+In order, the following will be built (use -v for more details):
+ - haskell-project-0.1.0.0 (lib) (configuration changed)
+Configuring library for haskell-project-0.1.0.0..
+Preprocessing library for haskell-project-0.1.0.0..
+GHCi, version 9.4.7: https://www.haskell.org/ghc/  :? for help
+[1 of 2] Compiling MyLib            ( src/MyLib.hs, interpreted )
+[2 of 2] Compiling OtherLib         ( src/OtherLib.hs, interpreted )
+Ok, two modules loaded.
+ghci> import OtherLib
+ghci> otherFunc "Hello Haskell"
+13
+```
+
+![ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/d27ea8dcfad541918d9094b9aed83e7d61daf8532bbbe.png)  
+「　↑　なんか動いた。何をやってるか分からないぜ」  
+
+![ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/d27ea8dcfad541918d9094b9aed83e7d61daf8532bbbe.png)  
+「　エグザンプルは　ここで終わってるぜ。あとは勝手に調べろとのことだぜ」  
+
+![kifuwarabe-futsu.png](https://crieit.now.sh/upload_images/beaf94b260ae2602ca8cf7f5bbc769c261daf8686dbda.png)  
+「　サンプル・プログラムを探そうぜ？」  
+
 .
