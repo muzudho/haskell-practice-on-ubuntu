@@ -834,11 +834,111 @@ someFunc
 ![ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/d27ea8dcfad541918d9094b9aed83e7d61daf8532bbbe.png)  
 「　↑　なんのこっちゃ」  
 
+# 依存性の追加
 
+![ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/d27ea8dcfad541918d9094b9aed83e7d61daf8532bbbe.png)  
+「　`haskell-project.cabal` ファイルを　Visual Studio Code で開くぜ」  
 
+🗒 `haskell-project.cabal`:  
 
+```cabal
+cabal-version:      2.4
+name:               haskell-project
+version:            0.1.0.0
 
+-- A short (one-line) description of the package.
+-- synopsis:
 
+-- A longer description of the package.
+-- description:
 
+-- A URL where users can report bugs.
+-- bug-reports:
+
+-- The license under which the package is released.
+-- license:
+author:             muzudho
+maintainer:         muzudho1@gmail.com
+
+-- A copyright notice.
+-- copyright:
+-- category:
+extra-source-files: CHANGELOG.md
+
+library
+    exposed-modules:  MyLib
+
+    -- Modules included in this library but not exported.
+    -- other-modules:
+
+    -- LANGUAGE extensions used by modules in this package.
+    -- other-extensions:
+    build-depends:    base ^>=4.17.2.0
+    hs-source-dirs:   src
+    default-language: Haskell2010
+
+executable haskell-project
+    main-is:          Main.hs
+
+    -- Modules included in this executable, other than Main.
+    -- other-modules:
+
+    -- LANGUAGE extensions used by modules in this package.
+    -- other-extensions:
+    build-depends:
+        base ^>=4.17.2.0,
+        haskell-project
+
+    hs-source-dirs:   app
+    default-language: Haskell2010
+```
+
+![ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/d27ea8dcfad541918d9094b9aed83e7d61daf8532bbbe.png)  
+「　↑　なんのこっちゃ」  
+
+![ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/d27ea8dcfad541918d9094b9aed83e7d61daf8532bbbe.png)  
+「　`src/MyLib.hs` ファイルを　Visual Studio Code で開くぜ」  
+
+🗒 `src/MyLib.hs` :  
+
+```hs
+module MyLib (someFunc) where
+
+import System.Directory
+
+someFunc :: IO ()
+someFunc = do
+  contents <- listDirectory "src"
+  putStrLn (show contents)
+```
+
+![ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/d27ea8dcfad541918d9094b9aed83e7d61daf8532bbbe.png)  
+「　↑　なんのこっちゃ」  
+
+## モジュールの追加
+
+![ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/d27ea8dcfad541918d9094b9aed83e7d61daf8532bbbe.png)  
+「　以下のファイルを新規作成しろとのことだぜ」  
+
+🗒 `src/OtherLib.hs` :  
+
+```hs
+module OtherLib where
+
+otherFunc :: String -> Int
+otherFunc str = length str
+```
+
+```bash
+cabal repl
+ghci> import OtherLib
+
+<no location info>: error:
+    Could not find module ‘OtherLib’
+    It is not a module in the current program, or in any known package.```
+```
+
+![ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/d27ea8dcfad541918d9094b9aed83e7d61daf8532bbbe.png)  
+「　↑　ダメだ　エラーだ　終わった」  
 
 .
