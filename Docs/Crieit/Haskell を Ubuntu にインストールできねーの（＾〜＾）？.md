@@ -474,6 +474,121 @@ Hello, Haskell!
 ![ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/d27ea8dcfad541918d9094b9aed83e7d61daf8532bbbe.png)  
 「　↑　`hello` コマンドができたのかだぜ？　あっ、動いた」  
 
+## ハスケルの構文とか何も分からん
+
+![ohkina-hiyoko-futsu2.png](https://crieit.now.sh/upload_images/96fb09724c3ce40ee0861a0fd1da563d61daf8a09d9bc.png)  
+「　`ghci` がインタープリター・モードになってんじゃないの？　それで練習するんじゃないの？」  
+
+```ghci
+ghci
+GHCi, version 8.8.4: https://www.haskell.org/ghc/  :? for help
+Prelude> 1 + 1
+2
+Prelude> putStrLn "Hello, world!"
+Hello, world!
+```
+
+![ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/d27ea8dcfad541918d9094b9aed83e7d61daf8532bbbe.png)  
+「　↑　そのようだなあ」  
+
+```hs
+Prelude> double x = x + x
+Prelude> double 2
+4
+```
+
+![ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/d27ea8dcfad541918d9094b9aed83e7d61daf8532bbbe.png)  
+「　↑　数を２倍にする double 関数を作って　実行したようだぜ、飽きてきた」  
+
+```hs
+Prelude> :{
+Prelude| map f list =
+Prelude|     case list of
+Prelude|         [] -> []
+Prelude|         x : xs -> f x : map f xs
+Prelude| :}
+Prelude> 
+Prelude> 
+Prelude> 
+```
+
+![ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/d27ea8dcfad541918d9094b9aed83e7d61daf8532bbbe.png)  
+「　↑　どうやって　このモードから抜ける？」  
+
+📖　[GHCiの基本的な使い方まとめ](https://qiita.com/Izawa_/items/6fc0a7583dc71be48c2a)  
+
+![ohkina-hiyoko-futsu2.png](https://crieit.now.sh/upload_images/96fb09724c3ce40ee0861a0fd1da563d61daf8a09d9bc.png)  
+「　`:q` じゃないの？」  
+
+```hs
+Prelude> :q
+Leaving GHCi.
+```
+
+![ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/d27ea8dcfad541918d9094b9aed83e7d61daf8532bbbe.png)  
+「　↑　確かに」  
+
+```hs
+Prelude> :{
+Prelude| map f list =
+Prelude|     case list of
+Prelude|         [] -> []
+Prelude|         x : xs -> f x : map f xs
+Prelude| :}
+Prelude> map
+
+<interactive>:7:1: error:
+    • No instance for (Show ((t0 -> a0) -> [t0] -> [a0]))
+        arising from a use of ‘print’
+        (maybe you haven't applied a function to enough arguments?)
+    • In a stmt of an interactive GHCi command: print it
+Prelude> map (+1) [1, 2, 3]
+[2,3,4]
+```
+
+![ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/d27ea8dcfad541918d9094b9aed83e7d61daf8532bbbe.png)  
+「　↑　抜けたらダメだった　続けるのだった」  
+
+```hs
+Prelude> :load hello.hs
+[1 of 1] Compiling Main             ( hello.hs, interpreted )
+Ok, one module loaded.
+*Main> main
+Hello, Haskell!
+```
+
+![ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/d27ea8dcfad541918d9094b9aed83e7d61daf8532bbbe.png)  
+「　↑　ファイルの読み込み」  
+
+```hs
+*Main> import Data.Bits
+*Main Data.Bits> shiftL 32 1
+64
+*Main Data.Bits> clearBit 33 0
+32
+```
+
+![ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/d27ea8dcfad541918d9094b9aed83e7d61daf8532bbbe.png)  
+「　↑　モジュールをインポートして論理左シフトか？」  
+
+```hs
+:type putStrLn
+putStrLn :: String -> IO ()
+```
+
+![ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/d27ea8dcfad541918d9094b9aed83e7d61daf8532bbbe.png)  
+「　↑　型のヘルプでも見てんのか？」  
+
+```hs
+:quit
+Leaving GHCi.
+```
+
+![ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/d27ea8dcfad541918d9094b9aed83e7d61daf8532bbbe.png)  
+「　↑　終了」  
+
+![kifuwarabe-futsu.png](https://crieit.now.sh/upload_images/beaf94b260ae2602ca8cf7f5bbc769c261daf8686dbda.png)  
+「　練習が全然足りないな」  
 
 
 .
