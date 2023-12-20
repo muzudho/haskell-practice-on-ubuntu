@@ -317,6 +317,10 @@ git commit -a
 ![ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/d27ea8dcfad541918d9094b9aed83e7d61daf8532bbbe.png)  
 「　↑ `git commit -a` で　ローカルのリポジトリに　ぶち込むらしい」  
 
+![ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/d27ea8dcfad541918d9094b9aed83e7d61daf8532bbbe.png)  
+「　↑　なんか　コメントを打鍵して `[Ctrl] + [O]` キーで `COMMIT_EDITMSG` ファイルを保存、  
+`[Ctrl] + [X]` キーでエディターを終了」  
+
 ```bash
 git push
 ```
@@ -673,6 +677,165 @@ The Glorious Glasgow Haskell Compilation System, version 9.4.7
 
 ![ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/d27ea8dcfad541918d9094b9aed83e7d61daf8532bbbe.png)  
 「　↑　インストールされてる……」  
+
+```bash
+cabal repl --build-depends async,say
+```
+
+![ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/d27ea8dcfad541918d9094b9aed83e7d61daf8532bbbe.png)  
+「　↑　何をやってるか分からないが　コマンドを叩くぜ」  
+
+```bash
+Resolving dependencies...
+Build profile: -w ghc-9.4.7 -O1
+In order, the following will be built (use -v for more details):
+ - hashable-1.4.3.0 (lib) (requires download & build)
+ - say-0.1.0.1 (lib) (requires download & build)
+ - async-2.2.5 (lib) (requires download & build)
+ - fake-package-0 (lib) (first run)
+Downloading  hashable-1.4.3.0
+Downloaded   hashable-1.4.3.0
+Downloading  async-2.2.5
+Starting     hashable-1.4.3.0 (lib)
+Building     hashable-1.4.3.0 (lib)
+Downloaded   async-2.2.5
+Downloading  say-0.1.0.1
+Downloaded   say-0.1.0.1
+Starting     say-0.1.0.1 (lib)
+Building     say-0.1.0.1 (lib)
+Installing   hashable-1.4.3.0 (lib)
+Installing   say-0.1.0.1 (lib)
+Completed    hashable-1.4.3.0 (lib)
+Starting     async-2.2.5 (lib)
+Completed    say-0.1.0.1 (lib)
+Building     async-2.2.5 (lib)
+Installing   async-2.2.5 (lib)
+Completed    async-2.2.5 (lib)
+Configuring library for fake-package-0..
+Preprocessing library for fake-package-0..
+Warning: No exposed modules
+GHCi, version 9.4.7: https://www.haskell.org/ghc/  :? for help
+Loaded GHCi configuration from /tmp/cabal-repl.-149129/setcwd.ghci
+ghci> 
+```
+
+![ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/d27ea8dcfad541918d9094b9aed83e7d61daf8532bbbe.png)  
+「　↑　何のこっちゃ」  
+
+```hs
+ghci> import Control.Concurrent.Async
+ghci> import Say
+ghci> concurrently_ (sayString "Hello") (sayString "World")
+Hello
+World
+```
+
+![ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/d27ea8dcfad541918d9094b9aed83e7d61daf8532bbbe.png)  
+「　↑　並行処理をしたんかな？」  
+
+```bash
+:quit
+Leaving GHCi.
+```
+
+```bash
+cabal install --lib async say --package-env .
+```
+
+![ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/d27ea8dcfad541918d9094b9aed83e7d61daf8532bbbe.png)  
+「　↑　何をやってるか分からないが　コマンドを叩くぜ」  
+
+```bash
+Warning: Unknown/unsupported 'ghc' version detected (Cabal 3.6.2.0 supports
+'ghc' version < 9.4): /home/muzudho/.ghcup/bin/ghc is version 9.4.7
+Warning: Unknown/unsupported 'ghc' version detected (Cabal 3.6.2.0 supports
+'ghc' version < 9.4): /home/muzudho/.ghcup/bin/ghc is version 9.4.7
+Resolving dependencies...
+Up to date
+```
+
+![ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/d27ea8dcfad541918d9094b9aed83e7d61daf8532bbbe.png)  
+「　↑　だんだん　嫌になってきた」  
+
+# パッケージを作る？
+
+```bash
+mkdir haskell-project
+cd haskell-project
+cabal init --interactive
+```
+
+![ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/d27ea8dcfad541918d9094b9aed83e7d61daf8532bbbe.png)  
+「　↑　わけもわからず打鍵」  
+
+```bash
+Should I generate a simple project with sensible defaults? [default: y] 
+
+Guessing dependencies...
+
+Generating LICENSE...
+Warning: unknown license type, you must put a copy in LICENSE yourself.
+Generating CHANGELOG.md...
+Generating src/MyLib.hs...
+Generating app/Main.hs...
+Generating haskell-project.cabal...
+
+Warning: no synopsis given. You should edit the .cabal file and add one.
+You may want to edit the .cabal file and add a Description field.
+```
+
+![ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/d27ea8dcfad541918d9094b9aed83e7d61daf8532bbbe.png)  
+「　↑　なんのこっちゃ」  
+
+Input:  
+
+```bash
+cabal build
+```
+
+Output:  
+
+```bash
+Warning: Unknown/unsupported 'ghc' version detected (Cabal 3.6.2.0 supports
+'ghc' version < 9.4): /home/muzudho/.ghcup/bin/ghc is version 9.4.7
+Resolving dependencies...
+Build profile: -w ghc-9.4.7 -O1
+In order, the following will be built (use -v for more details):
+ - haskell-project-0.1.0.0 (lib) (first run)
+ - haskell-project-0.1.0.0 (exe:haskell-project) (first run)
+Configuring library for haskell-project-0.1.0.0..
+Preprocessing library for haskell-project-0.1.0.0..
+Building library for haskell-project-0.1.0.0..
+[1 of 1] Compiling MyLib            ( src/MyLib.hs, /home/muzudho/Documents/git_hub/haskell-practice-on-ubuntu/haskell-project/dist-newstyle/build/x86_64-linux/ghc-9.4.7/haskell-project-0.1.0.0/build/MyLib.o, /home/muzudho/Documents/git_hub/haskell-practice-on-ubuntu/haskell-project/dist-newstyle/build/x86_64-linux/ghc-9.4.7/haskell-project-0.1.0.0/build/MyLib.dyn_o )
+Configuring executable 'haskell-project' for haskell-project-0.1.0.0..
+Preprocessing executable 'haskell-project' for haskell-project-0.1.0.0..
+Building executable 'haskell-project' for haskell-project-0.1.0.0..
+[1 of 1] Compiling Main             ( app/Main.hs, /home/muzudho/Documents/git_hub/haskell-practice-on-ubuntu/haskell-project/dist-newstyle/build/x86_64-linux/ghc-9.4.7/haskell-project-0.1.0.0/x/haskell-project/build/haskell-project/haskell-project-tmp/Main.o )
+[2 of 2] Linking /home/muzudho/Documents/git_hub/haskell-practice-on-ubuntu/haskell-project/dist-newstyle/build/x86_64-linux/ghc-9.4.7/haskell-project-0.1.0.0/x/haskell-project/build/haskell-project/haskell-project
+```
+
+![ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/d27ea8dcfad541918d9094b9aed83e7d61daf8532bbbe.png)  
+「　↑　なんのこっちゃ」  
+
+Input:  
+
+```bash
+cabal run
+```
+
+output:  
+
+```plaintext
+Up to date
+Hello, Haskell!
+someFunc
+```
+
+![ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/d27ea8dcfad541918d9094b9aed83e7d61daf8532bbbe.png)  
+「　↑　なんのこっちゃ」  
+
+
+
 
 
 
