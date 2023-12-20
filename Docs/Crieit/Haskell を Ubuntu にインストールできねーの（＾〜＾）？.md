@@ -307,6 +307,23 @@ Everything up-to-date
 ![ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/d27ea8dcfad541918d9094b9aed83e7d61daf8532bbbe.png)  
 「　`git push` 、これでどうか？」  
 
+## よく使うコマンド
+
+```bash
+#cd レポジトリのディレクトリ
+git commit -a
+```
+
+![ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/d27ea8dcfad541918d9094b9aed83e7d61daf8532bbbe.png)  
+「　↑ `git commit -a` で　ローカルのリポジトリに　ぶち込むらしい」  
+
+```bash
+git push
+```
+
+![ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/d27ea8dcfad541918d9094b9aed83e7d61daf8532bbbe.png)  
+「　↑ `git push` で　リモートのリポジトリに　ぶち上げるらしい」  
+
 # (📅 2023-12-20 ⏰ 19:18) まだ Haskell をインストールできていない
 
 ![kifuwarabe-futsu.png](https://crieit.now.sh/upload_images/beaf94b260ae2602ca8cf7f5bbc769c261daf8686dbda.png)  
@@ -589,6 +606,76 @@ Leaving GHCi.
 
 ![kifuwarabe-futsu.png](https://crieit.now.sh/upload_images/beaf94b260ae2602ca8cf7f5bbc769c261daf8686dbda.png)  
 「　練習が全然足りないな」  
+
+# キャベルもスタックも無い
+
+```shell
+cabal repl --build-depends async,say
+Command 'cabal' not found, but can be installed with:
+sudo apt install cabal-install
+
+stack exec --package async --package say -- ghci
+Command 'stack' not found, but can be installed with:
+sudo apt install haskell-stack
+```
+
+![ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/d27ea8dcfad541918d9094b9aed83e7d61daf8532bbbe.png)  
+「　↑　キャベルもスタックも無いが？」  
+
+![ohkina-hiyoko-futsu2.png](https://crieit.now.sh/upload_images/96fb09724c3ce40ee0861a0fd1da563d61daf8a09d9bc.png)  
+「　Visual Studio の拡張ですからねえ」  
+
+📖　[https://www.haskell.org/ghcup/install/](https://www.haskell.org/ghcup/install/)  
+
+📺　[https://www.youtube.com/watch?v=bB4fmQiUYPw](https://www.youtube.com/watch?v=bB4fmQiUYPw)  
+
+![ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/d27ea8dcfad541918d9094b9aed83e7d61daf8532bbbe.png)  
+「　↑　動画もあるが　Windows　で参考にならねー。飽きてきた」  
+
+```bash
+curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
+```
+
+```bash
+[ Warn  ] [GHCup-00110] ghc-9.4.7 is already installed; if you really want to reinstall it, you may want to run 'ghcup install ghc --force 9.4.7'
+[ Info  ] GHC 9.4.7 successfully set as default version
+[ Warn  ] [GHCup-00110] cabal-3.6.2.0-p1 is already installed; if you really want to reinstall it, you may want to run 'ghcup install cabal --force 3.6.2.0-p1'
+```
+
+![ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/d27ea8dcfad541918d9094b9aed83e7d61daf8532bbbe.png)  
+「　↑　cabel はインストールされてるらしいが、コマンドは無い」  
+
+```bash
+ghcup install cabal --force 3.6.2.0-p1
+ghcup: command not found
+```
+
+![ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/d27ea8dcfad541918d9094b9aed83e7d61daf8532bbbe.png)  
+「　↑　`ghcup` コマンドも無いぜ」  
+
+![kifuwarabe-futsu.png](https://crieit.now.sh/upload_images/beaf94b260ae2602ca8cf7f5bbc769c261daf8686dbda.png)  
+「　**Visual Studio Code を再起動** してみては？」  
+
+```bash
+ghcup --version
+The GHCup Haskell installer, version 0.1.20.0
+```
+
+```bash
+ghc --version
+The Glorious Glasgow Haskell Compilation System, version 9.4.7
+```
+
+```bash
+ghci --version
+The Glorious Glasgow Haskell Compilation System, version 9.4.7
+```
+
+![ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/d27ea8dcfad541918d9094b9aed83e7d61daf8532bbbe.png)  
+「　↑　インストールされてる……」  
+
+
+
 
 
 .
