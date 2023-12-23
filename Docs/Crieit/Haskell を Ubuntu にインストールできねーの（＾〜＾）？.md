@@ -1158,6 +1158,199 @@ sign n
 ![ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/d27ea8dcfad541918d9094b9aed83e7d61daf8532bbbe.png)  
 「　基礎勉強ばっかりだと飽きるんで　並行してやろう」  
 
+# レクチャー２
+
+![ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/d27ea8dcfad541918d9094b9aed83e7d61daf8532bbbe.png)  
+「　すぐ　詰まる。動画見よ」  
+
+📖　[Haskell Beginners 2022: Lecture 2](https://www.youtube.com/watch?v=rf-lie7U04Q)  
+
+* Pattern Matching
+    * Pattern
+    * `case-of` - スイッチ文みたいなやつか？
+    
+```hs
+eval :: Char -> Int -> Int -> Int
+eval op x y = case op of
+    '+' -> x + y
+    '-' -> x - y
+    '*' -> x * y
+    '/' -> div x y
+    _ -> 0
+```
+
+* 続き
+    * Patterns on lists
+    * Structural List Patterns
+    * Heads or Tails?
+    * List Recursion
+    * `What's wrong, Haskell?` - 書き方でコンパイル・エラーが出る例、エラーは出ないが悪い書き方の例
+    * `Totality` - すべての入力に対して出力が定義されていることか？
+        * `Partial` - 非 total
+
+* Data
+    * Tuples
+    * Working with tuples
+    * Algebraic Data Type (ADT)
+        * `Product Type` - 異なる型などを結合したもの
+            * `data: Product`
+            * `data: Working with data` - セッターとゲッターの書き方
+            * `data: Records` - 構造体みたいなもん
+        * `Sum Type`
+            * `Sum Types: Enumerations` - いわゆる列挙型
+            * `Sum Types` - Result とか
+            * `Recursive data types`
+                * `Empty list`
+                * `An eleement prepended to a list`
+            * `type` - type キーワード。型の別名？ 式が見やすくなる
+            * `newtype` - コンストラクタの別名？？
+* Polymorphism
+    * `Parametric polymorphism` - ジェネリクスみたいなやつ
+    * `Real types`
+    * `Hoogle` - Haskell Search Engine
+    * `Polymorphic types`
+    * `Common types` - Optional Value とか、左右とか
+    * `Common Functions`
+* Back to Functions
+    * `Eta-reduction, part1`
+    * `Eta-reduction, part2`
+    * `Function Composition`
+        * `ELI5 Composition`
+    * `Composition + Eta-reduction`
+    * More sources
+
+![ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/d27ea8dcfad541918d9094b9aed83e7d61daf8532bbbe.png)  
+「　はー、ふーん、うーん？」  
+
+# レクチャー３
+
+📖　[Haskell Beginners 2022: Lecture 3](https://www.youtube.com/watch?v=Vs-vvlYLtRI)  
+
+
+* Common properties
+* Polimorphisms
+    * `Parametric Polymorphism`
+    * `Ad-hoc polymorphism`
+* class
+* instance
+* Separation of concerns
+    * data
+    * class
+    * instance
+* Default methods
+* Not Java Interfaces
+* `{-# LANGUAGE #-}` - ランゲージ・プラグマ。
+* Standard Typeclasses
+    * Eq
+    * `Ord` - Ordering 比較演算子
+        * LT
+        * EQ
+        * GT
+    * Show
+    * Read
+    * Bounded
+    * Enum
+    * Num
+* Type interface
+    * `deriving` - 派生
+    * Generaliz(s)edNewtypeDeriving
+    * Algebra
+        * `<>` - ダイヤモンド演算子
+    * newtype again
+* Everything is Semigroup, Okay, not really everything...
+    * `Semigroup`
+* Algebra, part2
+    * `Monoid`
+    * Not everything is Monoid
+* Modules
+* Kind
+    * Be kind to us, Haskell
+        * `Kind` - a type of a type
+        * Kindly check your types
+* typeclass for type constructors
+* Functor
+* `Functor laws` - 10種類
+    * `1: Identity`
+    * `2: Composition`
+* Folds
+    * `ステップ関数`
+    * Everything is a Fold
+    * How foldr folds
+        * コンスピレーター
+    * How foldl/foldl' folds
+    * foldr vs foldl
+    * Foldable
+* Strict evaluation
+    * `等式推論`
+* `{-# LANGUAGE BangPatterns #-}`
+* Use strict/lazy evaluation wise.....
+* More sources
+
+# レクチャー４
+
+📖　[Haskell Beginners 2022: Lecture 4](https://www.youtube.com/watch?v=12D4Y2Hdnhg)  
+
+* Monad: The Idea
+    * Maybe, yes? Maybe, no?
+        * `andThen` - Ordinary helper function
+        * ワンライナーで書けるようになる
+    * Either way
+    * Multiple combinations
+    * It there a pattern?
+    * What to do when we see a pattern?
+        * `1. Nothing`
+        * `2. Recognize`
+        * `3. Copy-paste`
+        * `4. Abstract`
+        * `5. Put in a library`
+* Monad is a pattern
+    * 数学の圏論と違う。 Haskell は概念を借りてきただけ。
+    * Monad
+    * `return` も関数
+    * Just a typeclass
+    * Instance
+    * Laws
+* Generalizing
+    * `(:[])` - robot monkey operator
+* Refactoring
+* Actually, in Haskell...
+    * `pure` - ハスケルでは return の代わりに pure をよく使う
+* And that's the Monad
+* Real World
+    * `Purity` - 純粋。副作用がない関数。
+        * `1. Determinism`
+        * `2. Easier reasoning`
+        * `3. Simpler testing`
+        * `4. Composability`
+        * `5. Optimizations`
+        * `6. Parallelism`
+    * Purity + Laziness
+        * `getLine`
+    * Input/Output(IO)
+    * Concept of IO
+    * How to run IO?
+        * `unit type` - 空の丸括弧
+    * How to run Haskell programs?
+        * `main` - メイン関数
+        * ハローワールド
+        * Printing twice
+    * `do 構文` - do-notation
+        * `let-in rule`
+        * `Example with do`
+* Cabal - カバール
+    * 独自の形式。拡張子は `.cabal`
+    * `app` フォルダーと、 `src` フォルダーに分ける。 app は実行可能で、 src はライブラリーか？
+    * Typical main
+    * `build-depends`
+        * `Hackage` - ユーザー作成のパッケージが置いてる？
+* `Functional,Imperative` 
+    * `Imperative style` - 命令型スタイル
+    * `Functional style` - 関数型スタイル
+* More sources
+
+![ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/d27ea8dcfad541918d9094b9aed83e7d61daf8532bbbe.png)  
+「　ふーむむむ？」  
+
 # 次の関連記事
 
 📖　[Haskell でコンピューター将棋を作ろうぜ(^o^)？](https://crieit.net/posts/Haskell-o)  
