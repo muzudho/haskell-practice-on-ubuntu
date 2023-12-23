@@ -994,4 +994,157 @@ ghci> otherFunc "Hello Haskell"
 ![kifuwarabe-futsu.png](https://crieit.now.sh/upload_images/beaf94b260ae2602ca8cf7f5bbc769c261daf8686dbda.png)  
 「　サンプル・プログラムを探そうぜ？」  
 
+# (📅 2023-12-23 sat) サンプル・プログラムを探そうぜ？
+
+![ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/d27ea8dcfad541918d9094b9aed83e7d61daf8532bbbe.png)  
+「　↓　ハスケルの素人はこれを観ろ、ということだぜ」  
+
+* 📖　[https://github.com/haskell-beginners-2022/course-plan](https://github.com/haskell-beginners-2022/course-plan)  
+    * 📺　[Haskell Beginners 2022: Lecture 1](https://www.youtube.com/watch?v=6MsQcUprO9o&list=PLOJjn67NeYg9cWA4hyIWcxfaeX64pwo1c) - １時間２３分
+
+## FP - Functional Programming
+
+```
+fx(x) = x^2
+```
+
+プログラミングの関数は、この数学の関数ではない  
+
+* 無限ループでハングするから
+* 副作用があるから
+* 例外があるから
+* メモリがなくなるから
+
+プログラミングの関数は
+
+* ブロックを組み立てるようなもの
+    * Define
+    * Call
+    * Compose
+    * Pass as an argument
+    * Inspect
+
+* FP Concepts
+    * Higher-Order Functions (HOF)
+    * Algebraic Data Types (ADT)
+    * Pattern Matching
+    * Purity
+    * Immutability
+    * Totality
+    * Laziness
+
+* Haskell Features
+    * Static typing
+    * Polymorphisms
+    * Type inference
+    * Layout-sensitivity
+    * ML syntax
+    * Automatic currying
+    * Garbabe collector
+    * Green threads
+    * Software Transactional memory (STM)
+    * etc...
+
+* Haskell Toolchain
+    * GHC (Glasgow Haskell Compiler) - the compiler
+    * GHCi (GHC interactive) - interactive interpreter aka REPL(Read-Eval-Print-Loop)
+    * cabal - a Haskell build tool, the .......
+    * stack
+    * HLS (Haskell Language Server)
+    * ghcup
+
+* Haskell Toolchain / GHCi
+    * Arithmetic
+    * Logic
+    * Calling functions
+        * `()` are important!
+    * Types - 式は型を持つ。 `:t` や `:tpye` で型を見れる。 型の型は見れない
+    * Types of numbers - `:t +d` で調べる
+    * Types of functions -> `:t div` より、 `:t +d div` を使って調べる。２項の引数のとき、見やすい
+ 
+ * List
+     * List literals - `[]` の話。 `[] ++ []` とか
+     * List: head/tail/last/init
+         * 空リストの head は例外
+     * List: more functions
+         * reverse
+         * take
+         * drop
+         * null
+         *  elem
+         *  concat
+         *  length
+         *  `!!` - この操作は処理が遅い。インデックスを使ったランダムアクセスか？
+     *  List: ranges
+         *  `[1 .. 10]` や、 `[1, 3 .. 20]`
+         * `[10 .. 1]` は空っぽ。 `[10, 9 .. 1]` はできる
+         * `[0 .. ]` インフィニティもできる
+
+* Lazy evaluation
+    * `take 3 [0 .. ]` で、 `[0, 1, 2]`
+    * `take 3 (drop 5 [0 .. ]` で、`[5,6,7]`
+    * `length [0 .. ]` - 終わらない。無限のリストには注意
+
+* ディスプレイの信号が消えた
+
+* Syntax
+    * Define a function
+    * Loading a module
+
+* Packages
+    * module
+    * package
+    * Hackage
+    * base
+    * prelude
+
+* if-then-else
+    * `def list = if null list then def else head list`
+
+```hs
+headOfDefault def list =
+    if null list
+    then def
+    else head list
+```
+
+* 続き
+    * guards - マッチ構文みたいなやつ
+
+```
+sign n
+    |  略
+```
+
+* 続き
+    * `let-in` - リストに含まれているか調べる？
+    * `where` - 関数定義で使う？
+    * `immutablirity` - １回だけ代入できるというもの
+    * How do you change if you can't?
+        * Recursion
+        * No more loops
+
+*  Higher-order functions
+    *  First-Class Functions
+    *  Lambda functions
+    *  Partial application
+    * Standard HOFs
+        * map
+        * filter even
+        * filter
+        * any
+        * concatMap replicate
+        * take iterate
+    * Functions inside lists
+    * Recap: GHCi commands
+        * `:q`
+        * `:t`
+        * `:t +d`
+        * `:l`
+        * `:i`
+    * More sources
+
+![ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/d27ea8dcfad541918d9094b9aed83e7d61daf8532bbbe.png)  
+「　フーム」  
+
 .
