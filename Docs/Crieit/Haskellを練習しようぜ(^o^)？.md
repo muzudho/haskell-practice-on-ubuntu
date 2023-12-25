@@ -1121,4 +1121,130 @@ mono Shogidokoro.exe
 ![ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/d27ea8dcfad541918d9094b9aed83e7d61daf8532bbbe.png)  
 「　れさかい　も　きふわらべも、動かない」  
 
+## ハスケルが "Up to date" とエコーするのを止めさせられないか？
+
+```plaintext
+muzudho@muzudho-MS-7B09:~/Documents/git_hub/haskell-practice-on-ubuntu/shogi-project$ cabal run
+Up to date
+usi
+id name Kifuwarakell
+id author Muzudho
+usiok
+quit
+```
+
+![ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/d27ea8dcfad541918d9094b9aed83e7d61daf8532bbbe.png)  
+「　↑　ハスケルが "Up to date" とエコーするのを止めさせられないか？」  
+
+![kifuwarabe-futsu.png](https://crieit.now.sh/upload_images/beaf94b260ae2602ca8cf7f5bbc769c261daf8686dbda.png)  
+「　`run` するから `Up to date` と鳴くんじゃないか？」  
+
+```bash
+muzudho@muzudho-MS-7B09:~/Documents/git_hub/haskell-practice-on-ubuntu/shogi-project/dist-newstyle/build/x86_64-linux/ghc-9.4.7/shogi-project-0.1.0.0/x/shogi-project/build/shogi-project$ ./shogi-project
+usi
+id name Kifuwarakell
+id author Muzudho
+usiok
+quit
+```
+
+![ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/d27ea8dcfad541918d9094b9aed83e7d61daf8532bbbe.png)  
+「　↑　確かに」  
+
+![ohkina-hiyoko-futsu2.png](https://crieit.now.sh/upload_images/96fb09724c3ce40ee0861a0fd1da563d61daf8a09d9bc.png)  
+「　将棋所が頭に `./` を付けてコマンドを打鍵しますかね？」  
+
+📖　[Cabal Doesn't Build Executable](https://stackoverflow.com/questions/29778382/cabal-doesnt-build-executable)  
+
+![ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/d27ea8dcfad541918d9094b9aed83e7d61daf8532bbbe.png)  
+「　↑　カバルは実行ファイルを作ってくれないようなので、スタックを調べるか」  
+
+📖　[How to compile an executable from Haskell Stack build?](https://stackoverflow.com/questions/61956615/how-to-compile-an-executable-from-haskell-stack-build)  
+
+![ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/d27ea8dcfad541918d9094b9aed83e7d61daf8532bbbe.png)  
+「　↑　スタックも `run` しないと　動かんらしい」  
+
+## 1ファイルで作成して GHC でコンパイルしたらどうか？
+
+```bash
+# コンパイル
+ghc -o kifuwarakell.exe kifuwarakell.hs
+
+# 実行
+./kifuwarakell.exe
+```
+
+![ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/d27ea8dcfad541918d9094b9aed83e7d61daf8532bbbe.png)  
+「　↑　頭に `./` が付いたら、将棋所は読み込めないのでは？」  
+
+![kifuwarabe-futsu.png](https://crieit.now.sh/upload_images/beaf94b260ae2602ca8cf7f5bbc769c261daf8686dbda.png)  
+「　じゃあ　パスを通せだぜ」  
+
+![ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/d27ea8dcfad541918d9094b9aed83e7d61daf8532bbbe.png)  
+「　Ubuntu で、すでにパスが通っているディレクトリーはどこだぜ？」  
+
+```bash
+echo $PATH
+```
+
+![ohkina-hiyoko-futsu2.png](https://crieit.now.sh/upload_images/96fb09724c3ce40ee0861a0fd1da563d61daf8a09d9bc.png)  
+「　↑　コマンド打ちゃいいのよ」  
+
+Output:  
+
+```plaintext
+/home/muzudho/.cabal/bin:/home/muzudho/.ghcup/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin
+```
+
+![ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/d27ea8dcfad541918d9094b9aed83e7d61daf8532bbbe.png)  
+「　`/usr/local/games` とかどうか？」  
+
+![kifuwarabe-futsu.png](https://crieit.now.sh/upload_images/beaf94b260ae2602ca8cf7f5bbc769c261daf8686dbda.png)  
+「　将棋はゲームだしな」  
+
+![ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/d27ea8dcfad541918d9094b9aed83e7d61daf8532bbbe.png)  
+「　権限無いのか　GUI　でファイル移動できね」  
+
+```bash
+cd ~
+bkdir bin
+```
+
+![ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/d27ea8dcfad541918d9094b9aed83e7d61daf8532bbbe.png)  
+「　↑　ここに `kifuwarakell.exe` を置く」  
+
+```bash
+muzudho@muzudho-MS-7B09:~/bin$ pwd
+/home/muzudho/bin
+```
+
+```bash
+export PATH="$PATH:/home/muzudho/bin"
+echo $PATH
+```
+
+Output:  
+
+```plaintext
+/home/muzudho/.cabal/bin:/home/muzudho/.ghcup/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/home/muzudho/bin
+```
+
+![ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/d27ea8dcfad541918d9094b9aed83e7d61daf8532bbbe.png)  
+「　↑　これでパスは通した」  
+
+```bash
+muzudho@muzudho-MS-7B09:~/bin$ kifuwarakell.exe
+usi
+id name Kifuwarakell
+id author Muzudho
+usiok
+quit
+```
+
+![ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/d27ea8dcfad541918d9094b9aed83e7d61daf8532bbbe.png)  
+「　↑　`Up to date` も出ないし、 `./` も要らないな」  
+
+![ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/d27ea8dcfad541918d9094b9aed83e7d61daf8532bbbe.png)  
+「　それでも　将棋どころは　きふわらべ　をエンジン登録しない」  
+
 .
